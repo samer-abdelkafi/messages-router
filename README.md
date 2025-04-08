@@ -93,7 +93,7 @@ Below is a high-level graph representing the routing logic between the input que
    ```
 2. Build the project in the root directory:
    ```bash
-   ./mvn clean install
+   mvn clean install
    ```
 3. Navigate to the back-end application folder:
    ```bash
@@ -101,10 +101,10 @@ Below is a high-level graph representing the routing logic between the input que
    ```
 4. Run the back-end server:
    ```bash
-   ./mvn spring-boot:run
+   mvn spring-boot:run
    ```
 5. Access the user interface at:
-    - **Production mode**: [http://localhost:8080](http://localhost:8080)
+    - [http://localhost:8080](http://localhost:8080)
 
 ---
 
@@ -131,7 +131,7 @@ Below is a high-level graph representing the routing logic between the input que
 ## Testing
 
 ### IBM MQ Console
-- **Access the IBM MQ Console**:  
+- **Login the IBM MQ Console**: (admin/passw0rd) 
   [https://localhost:9443/ibmmq/console/login.html](https://localhost:9443/ibmmq/console/login.html)
 - **Post messages to the input queue**:  
   [https://localhost:9443/ibmmq/console/#/manage/qmgr/QM1/queue/local/DEV.QUEUE.1/view](https://localhost:9443/ibmmq/console/#/manage/qmgr/QM1/queue/local/DEV.QUEUE.1/view)
@@ -166,6 +166,11 @@ Below is a high-level graph representing the routing logic between the input que
 3. **Test Error Message**  
    Post a message with the content `ERROR` to the queue `DEV.QUEUE.1`.  
    The message will be routed to the `DEV.DEAD.LETTER.QUEUE` queue.
+
+4. **Display Messages list**
+   Access the application at: [http://localhost:8080](http://localhost:8080)
+   The application display the messages list :
+   ![UI for messages list](images/messages-list.png)
 
 ---
 
