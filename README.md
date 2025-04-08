@@ -27,7 +27,6 @@ The aim of the project is to provide a sample project, storing, and routing mess
 - **Message Routing**: route messages
 - **RESTful API Support**
 - **Front-End**: Display messages and partners
--
 
 ---
 
@@ -52,11 +51,9 @@ Below is a high-level graph representing the routing logic between the input que
 ### Explanation of the Routing Logic:
 1. Messages are **posted to the input queue**: `DEV.QUEUE.1`.
 2. At the **Root Node (Router)**, messages are routed based on their content:
-   - **SWIFT Messages** (e.g., formatted with SWIFT standards) are routed to: `DEV.QUEUE.2`.
+   - **SWIFT Messages MT103** are routed to: `DEV.QUEUE.2`.
    - **Test Messages** are routed to: `DEV.QUEUE.3`.
    - **Error Messages** (e.g., content includes "ERROR") are routed to the dead letter queue: `DEV.DEAD.LETTER.QUEUE`.
-3. The output queues process messages accordingly, simulating real-world routing scenarios.
-
 ---
 
 ## Prerequisites
