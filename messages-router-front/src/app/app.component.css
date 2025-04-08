@@ -1,0 +1,12 @@
+mat-toolbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: #17ba89; /* Couleur personnalisée */
+  color: #ffffff; /* Couleur du texte */
+
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+

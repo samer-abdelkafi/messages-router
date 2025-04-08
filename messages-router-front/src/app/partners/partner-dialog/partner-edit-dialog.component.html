@@ -1,0 +1,55 @@
+<div class="dialog-content">
+<h3 mat-dialog-title>Add Partner</h3>
+  <form [formGroup]="partnerForm" (ngSubmit)="save()">
+    <mat-dialog-content>
+      <mat-form-field appearance="fill" class="dialog-field">
+        <mat-label>Alias</mat-label>
+        <input matInput formControlName="alias"/>
+        <mat-error *ngIf="partnerForm.get('alias')?.hasError('required')">Alias is required</mat-error>
+        <mat-error *ngIf="partnerForm.get('alias')?.hasError('minlength')">Alias must be at least 3 characters long
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-field">
+        <mat-label>Type</mat-label>
+        <input matInput formControlName="type"/>
+        <mat-error *ngIf="partnerForm.get('type')?.hasError('required')">Type is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-field">
+        <mat-label>Direction</mat-label>
+        <mat-select formControlName="direction">
+          <mat-option *ngFor="let direction of directions" [value]="direction">{{ direction }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="partnerForm.get('direction')?.hasError('required')">Direction is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-field">
+        <mat-label>Application</mat-label>
+        <input matInput formControlName="application"/>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-field">
+        <mat-label>Flow Type</mat-label>
+        <mat-select formControlName="flowType">
+          <mat-option *ngFor="let flowType of flowTypes" [value]="flowType">{{ flowType }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="partnerForm.get('flowType')?.hasError('required')">Flow Type is required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="dialog-field">
+        <mat-label>Description</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+        <mat-error *ngIf="partnerForm.get('description')?.hasError('required')">Description is required</mat-error>
+        <mat-error *ngIf="partnerForm.get('description')?.hasError('minlength')">
+          Description must be at least 10 characters long
+        </mat-error>
+      </mat-form-field>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="close()">Cancel</button>
+      <button mat-raised-button color="primary" [disabled]="partnerForm.invalid" type="submit">Save</button>
+    </mat-dialog-actions>
+  </form>
+  </div>
