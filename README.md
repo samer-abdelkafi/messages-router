@@ -1,45 +1,33 @@
 # Messages Router
 
 ## Description
-**Messages Router** is an application built using Spring-boot, Spring-Integration DSL and Spring Data JPA, to efficiently route messages through a modern back-end system. 
-This application uses Java as its server-side platform and Angular on the front-end to provide a rich and responsive user interface.
+**Messages Router** is an application built using Spring-boot, Spring-Integration DSL and Spring Data JPA, to route messages. 
+This application uses Java as its server-side platform and Angular on the front-end to provide a responsive user interface.
 
-The aim of the project is to provide a sample project, storing, and routing messages with flexibility and ease of integration.
-
-
-Below is the updated **README** file with a graph representation to illustrate the routing process from the input queue to the destination queues:
-
-
-# Messages Router
-
-## Description
-**Messages Router** is a sample application built using **Spring Boot**, **Spring Integration DSL**, and **Spring Data JPA**, designed to efficiently route and store messages in a modern back-end system. It leverages **Java** as the server-side platform and **Angular** as the front-end framework to provide a rich, responsive, and extensible user interface.
-
-The purpose of this project is to serve as an example of message routing and processing, offering flexibility, scalability, and ease of integration for enterprise applications.
+The aim of the project is to provide a sample project, storing, and routing messages.
 
 ---
 
 ## Technologies Used
 
 ### Back-End
-- **Java SDK 17**: The programming language and platform for the back-end.
-- **Spring Boot 3.4.4**: A framework for building microservices.
-- **Spring Integration DSL**: Provides a flexible API for message routing and orchestration.
-- **Spring Data JPA**: Simplifies database interactions through Java Persistence API.
-- **Lombok**: Reduces boilerplate code by autogenerating Java getters, setters, and constructors.
+- **Java SDK 17**
+- **Spring Boot 3.4.4**
+- **Spring Integration DSL**
+- **Spring Data JPA**
+- **Lombok**
 
 ### Front-End
-- **Angular v19.1.x**: A framework for building dynamic and reactive web applications.
-- **@angular/material v19.2.8**: For a modern UI based on Google's Material Design.
+- **Angular v19.1.x**
+- **@angular/material v19.2.8**
 
 ---
 
 ## Features
-- **Message Routing**: Dynamically routes messages through predefined queues and filters messages as required.
-- **RESTful API Support**: Provides a REST API for CRUD operations.
-- **Scalable Front-End**: Angular provides a responsive UI with modular and scalable design.
-- **ORM Integration**: Efficient database interaction with Hibernate and JPA.
-- **MQ Integration**: Uses **IBM MQ** to handle message queues, including manual testing through the MQ console.
+- **Message Routing**: route messages
+- **RESTful API Support**
+- **Front-End**: Display messages and partners
+-
 
 ---
 
@@ -86,7 +74,7 @@ Below is a high-level graph representing the routing logic between the input que
 
 ## How to Run the Project
 
-### Running in Production Mode
+### Running in test Mode
 1. Start all required services using Docker:
    ```bash
    docker-compose up -d
@@ -109,7 +97,7 @@ Below is a high-level graph representing the routing logic between the input que
 ---
 
 ### Running in Development Mode
-1. Start the back-end server (follow the steps above for **Running in Production Mode**).
+1. Start the back-end server (follow the steps above for **Running in test Mode**).
 2. Navigate to the front-end folder:
    ```bash
    cd messages-router-front
@@ -171,20 +159,3 @@ Below is a high-level graph representing the routing logic between the input que
    Access the application at: [http://localhost:8080](http://localhost:8080)
    The application display the messages list :
    ![UI for messages list](images/messages-list.png)
-
----
-
-## Project Structure
-
-### Back-End
-- **`/src/main/java`**: Contains Java source files for Spring Boot and business logic.
-- **`/src/main/resources`**: Stores configuration files (e.g., `application.properties`, logs, and MQ configurations).
-
-### Front-End
-- **`/src/app`**: Contains the Angular project structure, including components, services, and modules.
-- **`styles.scss`**: Holds global CSS styling for the application.
-
----
-
-## Contribution
-Contributions are welcome! If you want to improve or report a bug, please submit a pull request or open an issue.
