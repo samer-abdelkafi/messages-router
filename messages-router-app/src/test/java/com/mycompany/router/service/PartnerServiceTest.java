@@ -40,11 +40,11 @@ class PartnerServiceTest {
     }
 
     @Test
-    void testSavePartnerWithInvalidType() {
+    void testSavePartnerWithAliasNull() {
         Partner partner = new Partner();
-        partner.setAlias("alias");
+        partner.setAlias(null);
         partner.setDescription("description");
-        partner.setType("");
+        partner.setType("type");
         partner.setApplication("application");
         partner.setFlowType(PartnerFlowTypeEnum.MESSAGE);
         partner.setDirection(PartnerDirectionEnum.INBOUND);
