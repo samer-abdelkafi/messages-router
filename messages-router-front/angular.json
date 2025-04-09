@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "messages-router": {
+    "messages-router-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
