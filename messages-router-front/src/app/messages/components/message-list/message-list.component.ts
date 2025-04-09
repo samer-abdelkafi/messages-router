@@ -7,17 +7,19 @@ import {TruncatePipe} from '../../../shared/pipes/truncate.pipe';
 import { MatDialog } from '@angular/material/dialog';
 import {MessageDialogComponent} from '../../message-dialog/message-dialog.component';
 import {DatePipe} from '@angular/common';
-
-
+import {MatIconButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
 
 @Component({
   selector: 'app-messages',
-  imports: [
-    MatTableModule,
-    MatPaginatorModule,
-    TruncatePipe,
-    DatePipe
-  ],
+    imports: [
+        MatTableModule,
+        MatPaginatorModule,
+        TruncatePipe,
+        DatePipe,
+        MatIcon,
+        MatIconButton
+    ],
   templateUrl: './message-list.component.html',
   styleUrl: './message-list.component.scss'
 })
@@ -73,7 +75,7 @@ export class MessageListComponent{
     });
   }
 
-
-
-
+  refresh() {
+    this.loadMessages(this.currentPage, this.pageSize, 'jmsId');
+  }
 }
