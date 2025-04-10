@@ -1,5 +1,5 @@
 export interface Partner {
-  id: number;
+  id: number | null;
   alias: string;
   type: string;
   direction: PartnerDirectionEnum;
