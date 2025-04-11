@@ -19,5 +19,9 @@
 		<java.version>17</java.version>
 	</properties>
 
+	<dependencies>
+		<!-- added for Github dependency graph -->
+	</dependencies>
+
 
 </project>
