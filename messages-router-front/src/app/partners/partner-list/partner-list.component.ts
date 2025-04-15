@@ -20,6 +20,8 @@ import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
 import {PartnerEditDialogComponent} from '../partner-dialog/partner-edit-dialog.component';
 import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import {SnackbarComponent} from '../../shared/components/snackbar/snackbar.component';
 
 @Component({
   selector: 'app-partners',
@@ -58,7 +60,8 @@ export class PartnerListComponent {
 
 
   constructor(private partnerService: PartnerService,
-              private dialog: MatDialog) {
+              private dialog: MatDialog,
+              private snackbar: MatSnackBar) {
   }
 
   ngOnInit(): void {
@@ -97,10 +100,13 @@ export class PartnerListComponent {
 
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
-        console.log('Form data saved: ', result);
         this.partnerService.save(result).subscribe(
           data => {
             this.refresh();
+            this.snackbar.openFromComponent(SnackbarComponent, {
+              data: {message: "Partner saved successfully!", action: 'Close', color: 'success'},
+              duration: 5000,
+            });
           }
         )
       }
