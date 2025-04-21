@@ -4,14 +4,19 @@ import com.mycompany.router.model.Message;
 import com.mycompany.router.service.MessageService;
 import jakarta.jms.ConnectionFactory;
 import lombok.extern.slf4j.Slf4j;
+import org.aopalliance.aop.Advice;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.integration.core.GenericHandler;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.dsl.IntegrationFlowDefinition;
+import org.springframework.integration.handler.advice.RequestHandlerRetryAdvice;
 import org.springframework.integration.jms.dsl.Jms;
 import org.springframework.integration.support.MessageBuilder;
 import org.springframework.messaging.MessageHandlingException;
+import org.springframework.retry.policy.SimpleRetryPolicy;
+import org.springframework.retry.support.RetryTemplate;
 
 import java.util.Date;
 import java.util.Map;
@@ -74,11 +79,11 @@ public class FlowConfig {
                     }
                     return payload;
                 })
-                .handle((payload, headers) -> {
+                .handle((GenericHandler<Object>) (payload, headers) -> {
                     Jms.outboundAdapter(connectionFactory)
                             .destination(queueName);
                     return payload;
-                })
+                }, e -> e.advice(retryAdvice()))
                 // Update message status
                 .handle(message -> messageService.updateStatusAndTargetQueue(getJmsMessageId(message), OK, queueName));
     }
@@ -106,6 +111,19 @@ public class FlowConfig {
                 .get();
 
     }
+
+    @Bean
+    public Advice retryAdvice() {
+        RetryTemplate retryTemplate = new RetryTemplate();
+        SimpleRetryPolicy retryPolicy = new SimpleRetryPolicy();
+        retryPolicy.setMaxAttempts(3);
+        retryTemplate.setRetryPolicy(retryPolicy);
+
+        RequestHandlerRetryAdvice advice = new RequestHandlerRetryAdvice();
+        advice.setRetryTemplate(retryTemplate);
+        return advice;
+    }
+
 
 
 }
